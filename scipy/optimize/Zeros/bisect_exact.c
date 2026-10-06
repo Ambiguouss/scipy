@@ -56,11 +56,11 @@ bisect_exact(callback_type f, double xa, double xb, double xtol, double rtol,
         }else{
             xb_int = xm_int;
         }
-        if(fm==0){
+        if(fm==0||xb_int-xa_int<=1){
             return xm;
         }
     }
-    solver_stats->error_num = CONVERGED;
+    solver_stats->error_num = CONVERR;
     memcpy(&xa,&xa_int,sizeof xa);
     return xa;
 }
